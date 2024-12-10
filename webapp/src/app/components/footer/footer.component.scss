@@ -1,0 +1,90 @@
+// Variables
+$primary-color: #435669;
+$secondary-color: #f1f1f1;
+$highlight-color: #ff7f50;
+$text-color: white;
+$footer-bg-color: #435669;
+$footer-text-color: #ddd;
+$icon-color: #ddd;
+$icon-hover-color: #ff7f50;
+
+// Footer Styles
+.site-footer {
+  background-color: $footer-bg-color;
+  color: $footer-text-color;
+  padding: 40px 20px;
+  font-family: 'Arial', sans-serif;
+
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 20px;
+
+    .footer-section {
+      width: 30%;
+      flex: 1;
+
+      h3 {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 15px;
+        color: $highlight-color;
+      }
+
+      p {
+        margin-bottom: 10px;
+      }
+
+      a {
+        color: $footer-text-color;
+        text-decoration: none;
+        transition: color 0.3s;
+
+        &:hover {
+          color: $highlight-color;
+        }
+      }
+
+      .social-icons {
+        display: flex;
+        gap: 15px;
+
+        a {
+          color: $icon-color;
+          font-size: 20px;
+          transition: color 0.3s;
+
+          &:hover {
+            color: $icon-hover-color;
+          }
+        }
+      }
+    }
+  }
+
+  .footer-bottom {
+    text-align: center;
+    font-size: 14px;
+    color: $footer-text-color;
+    padding: 10px 0;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  // Media Query for responsiveness
+  @media (max-width: 768px) {
+    .footer-top {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .footer-section {
+      width: 100%;
+      text-align: center;
+    }
+  }
+}
