@@ -9,6 +9,8 @@ import { product } from '../../../types/product'; // Assurez-vous que le type 'P
 import { inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
+import { HeaderComponent } from "../../header/header.component";
+import { AdminDashbaordComponent } from "../admin-dashbaord/admin-dashbaord.component";
 
 @Component({
   selector: 'app-products',
@@ -19,8 +21,10 @@ import { RouterLink } from '@angular/router';
     MatSortModule,
     MatPaginatorModule,
     MatButtonModule,
-    RouterLink
-  ],
+    RouterLink,
+    HeaderComponent,
+    AdminDashbaordComponent
+],
   templateUrl: './produts.component.html',
   styleUrls: ['./produts.component.scss']
 })
@@ -34,7 +38,8 @@ export class ProductComponent implements OnInit, AfterViewInit {
   productService = inject(ProductService);
 
   constructor() {
-    this.dataSource = new MatTableDataSource<product>([]); // Initialisation avec un tableau vide de type Product
+    this.dataSource = new MatTableDataSource<product>([]);
+    console.log("ssss"+this.dataSource) // Initialisation avec un tableau vide de type Product
   }
 
   ngOnInit(): void {
@@ -43,8 +48,14 @@ export class ProductComponent implements OnInit, AfterViewInit {
 
   private getServerData() {
     this.productService.getAllProducts().subscribe((result: any) => {
-      console.log(result);
-      this.dataSource.data = result; // Remplir le tableau avec les données reçues
+      console.log("API Response:", result);
+      this.dataSource.data = result.map((product: any) => ({
+        id: product._id, // Si l'ID s'appelle `productId` dans l'API
+        name: product.name,
+        price: product.price,
+        shortDescription: product.shortDescription,
+        discount: product.discount,
+      }));
     });
   }
 

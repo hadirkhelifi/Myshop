@@ -1,20 +1,25 @@
 <header class="site-header">
     <div class="top-bar">
-        <div class="logo cursor-pointer" routerLink="/">
-            <img src="logo.png" alt="Website logo">
+        <div class="logo cursor-pointer" routerLink="home">
+            <h1> <a routerLink="/home" style="color: white">MYSHOP</a></h1>
         </div>
         <div class="search-bar">
-            <input type="text" placeholder="Search ..." (keyup.enter)="onSearch($event)">
+            <input type="text" placeholder="Search ..."
+            [(ngModel)]="searchTerm"
+    
+             (keyup.enter)="onSearch($event)">
             <button type="submit"><i class="fas fa-search"></i></button>
-            </div>
+            </div>   
             <div class="Profile">
-                <a href="#">Profile</a>
+                <a href="#">{{ userName }}</a>
+                <span style="margin: 0 10px;">|</span>
+                <a (click)="logout()">logout</a>
             </div>
     </div>
     <nav class="category-menu">
         <ul>
-            @for (category of categoryList; track $index) {
-                <li (click)="searchCategory(category._id!)"> <a> {{category.name}}</a> </li>
+            @for (category of categoryList; track $index){
+              <li (click)="searchCategory(category._id!)" class="cursor-pointer"> <a> {{category.name}}</a> </li>
             }
         </ul>
     </nav>

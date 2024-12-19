@@ -1,35 +1,20 @@
+const config = require("config");
 const jwt = require("jsonwebtoken");
 
+const auth = (req, res, next) => {
+    const token = req.header("x-auth-token");
 
-
-function verifyToken(req, res, next) {
-    const token = req.header("Authorization"); 
-    console.log(req.header);
     if (!token) {
-        return res.status(401).send({
-            error: "Access denied",
-        });
+        return res.status(401).json({ msg: "No token, authorization denied" });
     }
+
     try {
-        const decode = jwt.verify(token, "seceret"); 
-         console.log(decode); 
+        const decoded = jwt.verify(token, config.get("jwtSecret"));
+        req.user = decoded; // Stockez l'objet décodé complet
         next();
-    } catch (err) {
-        return res.status(401).send({
-            error: "Invalid token",
-        });
+    } catch (e) {
+        res.status(400).json({ msg: "Token is not valid, please login again" });
     }
-}
+};
 
-
-
- /*function isAdmin(req, res, next){
-    if (req.user && req.user.isAdmin){
-        next();
-    }else{
-        return res.status(403).send({
-            error: "Forbidden",
-        });
-    }
-}*/
-module.exports = { verifyToken/*,isAdmin*/ };
+module.exports = auth;

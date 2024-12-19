@@ -1,48 +1,33 @@
-<div class="flex justify-center w-full m-10">
-    <div class="bg-white p-6 rounded-lg shadow-md w-6/12 max-w-sm">
-        <h2 class="text-2xl font-bold mb-4 text-gray-800 text-center">Register</h2>
-        <form [formGroup]="registerForm">
-            <!-- Name Field -->
-            <div class="mb-4">
-                <mat-form-field class="w-full">
-                    <mat-label for="name">Name</mat-label>
-                <input 
-                    formControlName="name"
-                    matInput 
-                    placeholder="Enter your name"
-                    required
-                />
-                </mat-form-field>
-            </div>
-    
-            <!-- Email Field -->
-            <div class="mb-4">
-                <mat-form-field class="w-full">
-                    <mat-label for="name">Email</mat-label>
-                <input
-                    formControlName="email"
-                    matInput 
-                    placeholder="Enter your email"
-                    required
-                />
-                </mat-form-field>
-            </div>
-    
-            <!-- Password Field -->
-            <div class="mb-4">
-                <mat-form-field class="w-full">
-                    <mat-label for="name">PassWord</mat-label>
-                <input
-                    type="password"
-                    formControlName="Password"
-                    matInput 
-                    required
-                />
-                </mat-form-field>
-            </div>
-    
-            <!-- Submit Button -->
-                <button mat-raised-button (click)="register()" [disabled]="registerForm.invalid">Register</button>
-         </form>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            Inscription
+          </div>
+          <div class="card-body">
+            <form (ngSubmit)="register()" #registerForm="ngForm">
+              <div class="form-group">
+                <label for="username">Nom:</label>
+                <input type="text" class="form-control" id="username" name="username" [(ngModel)]="user.username" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email" [(ngModel)]="user.email" required>
+              </div>
+              <div class="form-group">
+                <label for="password">Mot de passe:</label>
+                <input type="password" class="form-control" id="password" name="password" [(ngModel)]="user.password" required>
+              </div>
+              <div class="form-group">
+                <label for="role">Role:</label>
+                <input type="text" class="form-control" id="role" name="role" [(ngModel)]="user.role">
+              </div>
+              <button class="btn btn-primary" >S'inscrire</button>
+            </form>
+  
+          </div>
+        </div>
+      </div>
     </div>
-</div>
+  </div>

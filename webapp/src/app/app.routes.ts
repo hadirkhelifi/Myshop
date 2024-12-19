@@ -9,11 +9,17 @@ import { ProductFormComponent } from './components/manage/product-form/product-f
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
+import { AdminDashbaordComponent } from './components/manage/admin-dashbaord/admin-dashbaord.component';
+import { VisiteurComponent } from './components/visiteur/visiteur.component';
+import { ProductCardComponent } from './components/product-card/product-card.component';
+import { CommandeComponent } from './components/commande/commande.component';
+import { CommandeFormComponent } from './components/commande-form/commande-form.component';
 
 export const routes: Routes = [
   {
-    path: '',
-    component: HomeComponent,
+    path: 'visiteur',
+    component: VisiteurComponent,
   },
   {
     path: 'admin/categories/add',
@@ -55,9 +61,18 @@ export const routes: Routes = [
     path: 'products',
     component: ProductListComponent,
   },
-  {
+  /*{
     path: 'products/:id',
     component: ProductDetailComponent,
-  },
-  { path: 'register', component: RegisterComponent,}
+  },*/
+  { path: 'register', component: RegisterComponent,},
+  { path: 'login', component: LoginComponent},
+  { path: 'admin/dashbord', component: AdminDashbaordComponent},
+  { path: 'product/:id', component: ProductDetailComponent },
+  { path: 'visiteur', component: VisiteurComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'product-card', component: ProductCardComponent },
+  { path: 'admin/commmande', component: CommandeComponent },
+  { path: 'admin/commmande/add', component: CommandeFormComponent },
+  { path: 'admin/commande/:id', component: CommandeFormComponent }
 ];

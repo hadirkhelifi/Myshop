@@ -9,15 +9,16 @@ import { inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
 import { Category } from '../../../types/category';
+import { HeaderComponent } from "../../header/header.component";
+import { AdminDashbaordComponent } from "../admin-dashbaord/admin-dashbaord.component";
 
 
 @Component({
   selector: 'app-categories',
   imports: [MatFormFieldModule, MatInputModule,
-     MatTableModule, MatSortModule,
-      MatPaginatorModule,
-      MatButtonModule,RouterLink
-    ],
+    MatTableModule, MatSortModule,
+    MatPaginatorModule,
+    MatButtonModule, RouterLink, HeaderComponent, AdminDashbaordComponent],
   templateUrl: './categories.component.html',
   styleUrl: './categories.component.scss'
 })

@@ -1,1 +1,73 @@
-<p>product-detail works!</p>
+<app-header></app-header>
+<div class="container mx-auto p-6">
+  <!-- Product Detail Section -->
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 bg-white rounded-lg shadow-lg p-6">
+    <!-- Product Images -->
+    <div class="hidden md:block">
+      @for (url of product.images; track $index){
+        <img [src]="url" alt="Product Image" class="w-full h-auto"> 
+      }
+    </div>
+    <!-- Product Information -->
+    <div>
+      <h1 class="text-2xl font-bold text-gray-800">{{product.name}}</h1>
+      <p class="mt-2 text-lg text-gray-500">{{product.shortDescription}}</p>
+      <div class="mt-4">
+        <span class="text-3xl font-bold text-gray-600"><s>{{product.price}} DT</s></span> || 
+        
+        <span class="ml-4 text-red-500 ">{{product.discount}} % OFF  </span>
+        || <span class="text-3xl font-bold text-green-600">{{sellingPrice}} DT</span>
+      </div>
+      <div class="flex grap-8">
+        <button mat-fab color="warn" (click)="addToWishList(product)">
+          <!-- --> 
+          @if(isInWishlist(product)){
+            <mat-icon>favorite</mat-icon> remove to wish list
+          } @else { <mat-icon>favorite_border</mat-icon>add to wish list }
+          
+        </button>
+      </div>
+      <div class="mt-6">
+        <h3 class="text-lg font-semibold text-gray-800">Details</h3>
+        <ul class="list-disc ml-6 mt-2 text-gray-600">
+        {{product.description}}
+        </ul>
+      </div>
+      <button mat-raised-button color="primary" class="mt-6 w-full bg-blue-600 text-white text-lg font-semibold py-3 rounded-lg hover:bg-blue-700" [routerLink]="['/admin/commande/add']">
+       Commander 
+      </button>
+      
+    </div>
+  </div>
+
+  <!-- Product Description and Reviews -->
+  <div class="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <!-- Description Section -->
+    <div class="bg-white rounded-lg shadow-lg p-6">
+      <h2 class="text-xl font-bold text-gray-800">Product Description</h2>
+      <p class="mt-4 text-gray-600 leading-relaxed">  {{product.description}}
+      </p>
+    </div>
+
+    <!-- Reviews Section -->
+    <div class="bg-white rounded-lg shadow-lg p-6">
+      <h2 class="text-xl font-bold text-gray-800">Customer Reviews</h2>
+      <div class="mt-4">
+        <div class="flex items-center gap-2">
+          <div class="flex">
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.544L.245 6.909l6.563-.954L10 .5l2.192 5.455 6.563.954-4.75 4.637 1.123 6.544L10 15z"/></svg>
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.544L.245 6.909l6.563-.954L10 .5l2.192 5.455 6.563.954-4.75 4.637 1.123 6.544L10 15z"/></svg>
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.544L.245 6.909l6.563-.954L10 .5l2.192 5.455 6.563.954-4.75 4.637 1.123 6.544L10 15z"/></svg>
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.544L.245 6.909l6.563-.954L10 .5l2.192 5.455 6.563.954-4.75 4.637 1.123 6.544L10 15z"/></svg>
+            <svg class="w-5 h-5 text-gray-300" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.544L.245 6.909l6.563-.954L10 .5l2.192 5.455 6.563.954-4.75 4.637 1.123 6.544L10 15z"/></svg>
+          </div>
+          <p class="text-gray-500">(4/5)</p>
+        </div>
+        <p class="mt-2 text-gray-600">
+          "This product is amazing! It has exceeded my expectations and the quality is top-notch."
+        </p>
+        <p class="mt-1 text-sm text-gray-500">- John Doe</p>
+      </div>
+    </div>
+  </div>
+</div>

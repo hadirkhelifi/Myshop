@@ -9,13 +9,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
 import { BrandService } from '../../../services/brand.service';
 import { Brand } from '../../../types/brand';
+import { HeaderComponent } from "../../header/header.component";
+import { AdminDashbaordComponent } from "../admin-dashbaord/admin-dashbaord.component";
 
 @Component({
   selector: 'app-brands',
   imports: [MatFormFieldModule, MatInputModule,
     MatTableModule, MatSortModule,
-     MatPaginatorModule,
-     MatButtonModule,RouterLink],
+    MatPaginatorModule,
+    MatButtonModule, RouterLink, HeaderComponent, AdminDashbaordComponent],
   templateUrl: './brands.component.html',
   styleUrl: './brands.component.scss'
 })

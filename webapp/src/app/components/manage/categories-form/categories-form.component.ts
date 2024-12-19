@@ -5,11 +5,13 @@ import { MatInputModule } from '@angular/material/input';
 import { CategoryService } from '../../../services/category.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import {MatSelectModule} from '@angular/material/select';
+import { HeaderComponent } from "../../header/header.component";
+import { AdminDashbaordComponent } from "../admin-dashbaord/admin-dashbaord.component";
 
 @Component({
   selector: 'app-categories-form',
   standalone: true, // Ajoutez cette ligne si vous utilisez Angular 14+
-  imports: [FormsModule, MatInputModule, MatButtonModule,MatSelectModule],
+  imports: [FormsModule, MatInputModule, MatButtonModule, MatSelectModule, HeaderComponent, AdminDashbaordComponent],
   templateUrl: './categories-form.component.html',
   styleUrls: ['./categories-form.component.scss'] // Corrigé de styleUrl à styleUrls
 })

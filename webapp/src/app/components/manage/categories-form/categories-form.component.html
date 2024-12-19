@@ -1,3 +1,10 @@
+<app-header></app-header>
+<div class="flex justify-around p-10">
+    <button mat-raised-button routerLink="/admin/categories"> Manage Category</button>
+    <button mat-raised-button routerLink="/admin/products"> Manage Products </button>
+    <button mat-raised-button routerLink="/admin/brands"> Manage Brands</button>
+    <button mat-raised-button routerLink="/admin/commmande"> Manage Commandes </button>
+  </div>
 <div class="flex flex-col items-center px-40 mt-10">
     <h1 style="font-family: Arial, sans-serif; text-align: center; font-size: 2.5em; text-shadow: 2px 2px 5px rgba(0,0,0,0.3);">
         {{ isEdit ? 'Update Category' : 'Add New Category' }}

@@ -16,13 +16,27 @@ export class ProductService {
     const url = `${environment.apiUrl}/product`;
     console.log('Appel API GET:', url); // Vérifie l'URL de l'appel
     return this.http.get<product[]>(url).pipe(
-      tap(data => console.log('Données récupérées:', data)), // Affiche les données reçues
+      tap(data => {
+        if (Array.isArray(data)) {
+          console.log('Données récupérées:', data);
+          const shortDescription = data[2]?._id;
+          console.log('Données récupérées:', shortDescription);
+          if (shortDescription) {
+            console.log('Short Description à l\'indice 2:', shortDescription);
+          } else {
+            console.warn('Aucune propriété shortDescription à l\'indice 2.');
+          }
+        } else {
+          console.error('La réponse de l\'API n\'est pas un tableau:', data);
+        }
+      }),
       catchError(error => {
         console.error('Erreur lors de l\'appel API:', error);
         return throwError(error);
       })
     );
   }
+  
   
 
   getProductbyId(id: string){
@@ -33,9 +47,11 @@ export class ProductService {
   }
 
   updateProduct(id: string, model: product){
+    console.log("iddddd"+id)
     return this.http.put(environment.apiUrl+ '/product/'+ id, model);
   }
   deleteProductById(id: string){
+   
     return this.http.delete('http://localhost:3000/product/' + id);
   }
 

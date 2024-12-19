@@ -1,1 +1,18 @@
-<p>product-list works!</p>
+<app-header></app-header>
+<div class="flex px-10 py-2">
+    <div class="w-3/12">
+        <h6>Filters</h6>
+    </div>
+    <div class="flex-1">
+        <h6>Products</h6>
+        <div class="flex flex-wrap">
+                @for (product of products; track $index){
+                 <div class="w-3/12 mr-4 mb-4">
+                    <app-product-card [product]="product"></app-product-card>
+                 </div>
+                }  @empty {
+                    <h6> No Products founds</h6>
+                }    
+        </div>
+    </div>
+</div>

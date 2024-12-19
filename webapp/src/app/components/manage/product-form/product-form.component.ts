@@ -10,11 +10,13 @@ import { BrandService } from '../../../services/brand.service';
 import { ProductService } from '../../../services/product.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatCheckbox  } from '@angular/material/checkbox';
+import { HeaderComponent } from "../../header/header.component";
+import { AdminDashbaordComponent } from "../admin-dashbaord/admin-dashbaord.component";
 
 
 @Component({
   selector: 'app-product-form',
-  imports: [ReactiveFormsModule,MatInputModule,MatButtonModule,MatSelectModule,MatCheckbox],
+  imports: [ReactiveFormsModule, MatInputModule, MatButtonModule, MatSelectModule, MatCheckbox, HeaderComponent, AdminDashbaordComponent],
   templateUrl: './product-form.component.html',
   styleUrl: './product-form.component.scss'
 })
@@ -48,9 +50,9 @@ export class ProductFormComponent {
       this.brands = result;
     })
     this.id=this.route.snapshot.params["id"];
-    console.log(this.id);
+    console.log("rrr"+this.id);
     
-    /*if(this.id){
+   if(this.id){
       this.productService.getProductbyId(this.id).subscribe(result =>{
         for (let index = 0; index < this.images.length; index++) {
           this.addImage(); 
@@ -60,7 +62,7 @@ export class ProductFormComponent {
     }else{
       this.addImage();
 
-    }*/
+    }
 
 
   }

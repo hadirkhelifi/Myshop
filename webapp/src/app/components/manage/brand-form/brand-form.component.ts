@@ -4,10 +4,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { BrandService } from '../../../services/brand.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { HeaderComponent } from "../../header/header.component";
+import { AdminDashbaordComponent } from "../admin-dashbaord/admin-dashbaord.component";
 
 @Component({
   selector: 'app-brand-form',
-  imports: [MatInputModule,MatButtonModule,FormsModule],
+  imports: [MatInputModule, MatButtonModule, FormsModule, HeaderComponent, AdminDashbaordComponent],
   templateUrl: './brand-form.component.html',
   styleUrl: './brand-form.component.scss'
 })

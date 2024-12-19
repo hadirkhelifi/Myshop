@@ -1,13 +1,32 @@
-<div class="border-r-4 w-full" [routerLink]="'product/'+product._id">
+<div class="border-r-4 w-full shadow-lg" [routerLink]="'/product/'+product._id">
     <img [src]="product.images[0]" 
     alt="Product Image" 
     class="w-full h-52 object-cover" />
-    <div class="p-4">
-      <h3 class="mb-2"> {{ product.name }} </h3>
+    <div class="p-4 flex flex-col justify-between">
+      <div>
+        <h3 class="mb-2"> {{ product.name }} </h3>
       <p> {{ product.shortDescription }} </p>
+      </div>
       <div class="flex justify-between items-center">
-        <span class="text-2xl font-bold"> {{ product.price }} DT </span>
-        <button mat-flat-button color="primary"> Add To Cart </button>
+        <div class="mt-4">
+          <span class="text-3xl font-bold text-gray-600"><s>{{product.price}} DT</s></span> || 
+          <span class="ml-4 text-red-500 ">{{product.discount}} % OFF  </span>
+          || <span class="text-3xl font-bold text-green-600">{{sellingPrice}} DT</span>
+        </div> 
+        <button mat-fab color="warn" (click)="addToWishList(product)">
+          <!-- --> 
+          @if(isInWishlist(product)){
+            <mat-icon>favorite</mat-icon>
+          } @else { <mat-icon>favorite_border</mat-icon> }
+          
+        </button>
+
+        <button mat-fab color="primary" >
+          
+          <mat-icon>shopping_cart</mat-icon>
+             <!--<mat-icon>remove_shopping_cart</mat-icon>-->
+        </button>
+        
       </div>
     </div>
 </div>
