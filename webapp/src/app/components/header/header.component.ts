@@ -41,7 +41,7 @@ export class HeaderComponent {
 
   logout() {
     localStorage.removeItem('token');
-    localStorage.removeItem('user');
+    localStorage.removeItem('user');+
     localStorage.removeItem('username');
     this.router.navigateByUrl('/login');
   }

@@ -15,6 +15,7 @@ import { VisiteurComponent } from './components/visiteur/visiteur.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { CommandeComponent } from './components/commande/commande.component';
 import { CommandeFormComponent } from './components/commande-form/commande-form.component';
+import { CommandeClientComponent } from './components/commande-client/commande-client.component';
 
 export const routes: Routes = [
   {
@@ -74,5 +75,7 @@ export const routes: Routes = [
   { path: 'product-card', component: ProductCardComponent },
   { path: 'admin/commmande', component: CommandeComponent },
   { path: 'admin/commmande/add', component: CommandeFormComponent },
-  { path: 'admin/commande/:id', component: CommandeFormComponent }
+  { path: 'admin/commande/:id', component: CommandeFormComponent },
+  { path: 'client/commande', component: CommandeClientComponent }
+  
 ];
